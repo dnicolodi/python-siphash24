@@ -1,0 +1,33 @@
+[build-system]
+requires = [
+    "setuptools >=61.0",
+    "setuptools_scm",
+    "cython >= 3.0.0a11",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "siphash24"
+version = "1.0.dev0"
+description = "Streaming-capable SipHash Implementation"
+maintainers = [
+    { name = "Daniele Nicolodi", email = "daniele@grinta.net" },
+]
+requires-python = ">=3.7"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: Apache Software License",
+    "License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)",
+    "Programming Language :: C",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",    
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Software Development :: Libraries",
+]
+
+[project.urls]
+"Source" = "https://github.com/dnicolodi/python-siphash24/"
+"Issue Tracker" = "https://github.com/dnicolodi/python-siphash24/issues"

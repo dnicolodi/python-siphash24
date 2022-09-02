@@ -1,0 +1,55 @@
+name: build
+on:
+  push:
+    tags:
+      - 'v[0-9]*'
+
+jobs:
+
+  wheels:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04, windows-2019, macos-11]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker/setup-qemu-action@v2
+        with:
+          platforms: arm64
+        if: runner.os == 'Linux'
+      - uses: pypa/cibuildwheel@v2.9.0
+        env:
+          CIBW_SKIP: pp* cp36-* *-musllinux*
+          CIBW_ARCHS_MACOS: x86_64 universal2
+          CIBW_ARCHS_LINUX: x86_64 aarch64
+          CIBW_TEST_COMMAND: python {project}/test.py
+      - uses: actions/upload-artifact@v3
+        with:
+          path: wheelhouse/*.whl
+
+  sdist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: python -m pip install build
+      - run: python -m build --sdist
+      - uses: actions/upload-artifact@v3
+        with:
+          path: dist/*.tar.gz
+
+  upload:
+    needs:
+      - wheels
+      - sdist
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: artifact
+          path: dist
+      - run: python -m pip install twine
+      - run: python -m twine upload dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI }}

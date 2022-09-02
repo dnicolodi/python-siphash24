@@ -1,0 +1,4 @@
+dist/
+.mesonpy-native-file.ini
+subprojects/libcsiphash-1/
+subprojects/libcstdaux-1/
