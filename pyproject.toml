@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "siphash24"
-version = "1.0.dev0"
+version = "1.0"
 description = "Streaming-capable SipHash Implementation"
 maintainers = [
     { name = "Daniele Nicolodi", email = "daniele@grinta.net" },
