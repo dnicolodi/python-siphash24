@@ -1,10 +1,10 @@
 [build-system]
 requires = [
-    "setuptools >=61.0",
-    "setuptools_scm",
     "cython >= 3.0.0a11",
+    "meson >= 0.63.3",
+    "meson-python >= 0.11.0",
 ]
-build-backend = "setuptools.build_meta"
+build-backend = "mesonpy"
 
 [project]
 name = "siphash24"

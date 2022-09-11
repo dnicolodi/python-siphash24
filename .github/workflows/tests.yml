@@ -16,6 +16,10 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python }}
+      - uses: bus1/cabuild/action/msdevshell@v1
+        with:
+          architecture: x64
+        if: ${{ startsWith(matrix.platform, 'windows') }}
       - run: python -m pip install build
       - run: python -m build
       - run: python -m pip install dist/*.whl
