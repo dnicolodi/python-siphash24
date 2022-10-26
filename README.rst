@@ -3,9 +3,9 @@ siphash24: Streaming-capable SipHash Implementation
 
 This module provides a C-based implementation of `SipHash`__ with an
 interface compatible with the hash functions provided by the
-`hashlib`__ standard library module.  Only SipHash-2-4 is currently
-implemented.  The module `documentation`__ provides a detailed
-description of the API.
+`hashlib`__ standard library module.  SipHash-1-3 and SipHash-2-4
+variants are currently implemented.  The module `documentation`__
+provides a detailed description of the API.
 
 This module differs from other similar modules by providing a
 streaming-capable implementation and an interface compatible to the

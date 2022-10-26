@@ -12,9 +12,18 @@ libcsiphash = dependency('libcsiphash-1', static: true)
 
 py = import('python').find_installation()
 
+tempita = files('tempita.py')
+
+pyx = custom_target(
+  'siphash24.pyx',
+  input: 'siphash24.pyx.in',
+  output: 'siphash24.pyx',
+  command: [py, tempita, '@INPUT@', '@OUTPUT@']
+)
+
 py.extension_module(
   'siphash24',
-  'siphash24.pyx',
+  pyx,
   dependencies: libcsiphash,
   install: true
 )

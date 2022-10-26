@@ -9,7 +9,7 @@ build-backend = "mesonpy"
 [project]
 name = "siphash24"
 version = "1.1"
-description = "Streaming-capable SipHash Implementation"
+description = "Streaming-capable SipHash-1-3 and SipHash-2-4 Implementation"
 readme = "README.rst"
 maintainers = [
     { name = "Daniele Nicolodi", email = "daniele@grinta.net" },

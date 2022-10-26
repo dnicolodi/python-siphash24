@@ -4,8 +4,9 @@ siphash24: Streaming-capable SipHash Implementation
 
 This module provides a C-based streaming-capable implementation of
 `SipHash`__ with an interface compatible with the hash functions
-provided by the :mod:`hashlib` standard library module.  Only
-SipHash-2-4 is currently implemented.  Others can be added as needed.
+provided by the :mod:`hashlib` standard library module.  SipHash-1-3
+and SipHash-2-4 variants are currently implemented.  Others can be
+added as needed.
 
 This module differs from other similar modules by providing a
 streaming-capable implementation (data can be passed to the hash
@@ -29,6 +30,10 @@ released to the Public Domain.  This module is distributed with the
 same license as the ``c-siphash`` library: `Apache-2.0`__ or
 `LGPL-2.1-or-later`__.
 
+Despite implementing other SipHash variants, this module is named
+``siphash24`` because the ``siphash`` name was already taken on PyPI
+at the time this project was created.
+
 __ https://cr.yp.to/siphash/siphash-20120918.pdf
 __ https://cython.org/
 __ https://github.com/c-util/c-siphash
@@ -42,12 +47,13 @@ API
 
 .. currentmodule:: siphash24
 
-Hash objects implementing the SipHash-2-4 variant are created by
-a constructor function:
+Hash objects implementing the SipHash-1-3 and SipHash-2-4 variants are
+created by calling the constructor functions
 
+.. function:: siphash13(data=b'', key=b'')
 .. function:: siphash24(data=b'', key=b'')
 
-The constructor takes two optional parameters:
+respectively. These functions take two optional parameters:
 
 * **data** -- initial chunk of data to hash, which must be
   bytes-like object. It can be passed only as positional argument.

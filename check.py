@@ -2,10 +2,13 @@ import os
 import sys
 import siphash24
 
-if sys.hash_info.algorithm != 'siphash24': sys.exit(0)
+# Python uses a randomized seed unless told otherwise
 assert int(os.environ['PYTHONHASHSEED']) == 0
+
+# Python up to release 3.10 uses Sip Hash 13, Python 3.11 and later uses Sip Hash 13
+siphash = getattr(siphash24, sys.hash_info.algorithm)
 
 DATA = b'spam'
 
-assert siphash24.siphash24(DATA).intdigest() == hash(DATA)
-assert int.from_bytes(siphash24.siphash24(DATA).digest(), 'little', signed=True) == hash(DATA)
+assert siphash(DATA).intdigest() == hash(DATA)
+assert int.from_bytes(siphash(DATA).digest(), 'little', signed=True) == hash(DATA)
