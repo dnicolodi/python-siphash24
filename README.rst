@@ -16,10 +16,10 @@ most common platforms.  More platforms can be added to the build job
 as needed.
 
 Following the ``hashlib`` interface, the return value of the
-``digest()`` method is a ``bytes`` object.  It can be easily converted
-to an ``int`` with minimal overhead::
-
-  integer = int.from_bytes(siphash24(b'spam').digest(), 'little')
+``digest()`` method is a ``bytes`` object.  SipHash values are
+customarily stored as 64-bit integers.  This modules extends the
+``hashlib`` interface with an additional ``intdigest()`` method that
+returns the hash values as a 64-bit signed int object.
 
 The SipHash implementation is copied, with minimal modifications to
 allow compilation with MSCV, from the `c-siphash library`__, in turn

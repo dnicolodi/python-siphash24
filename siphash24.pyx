@@ -1,6 +1,6 @@
 # cython: language_level=3, boundscheck=False
 
-from libc.stdint cimport uint64_t, uint8_t
+from libc.stdint cimport uint64_t, int64_t, uint8_t
 from libc.stdio cimport snprintf
 from libc.string cimport memcpy, memset
 from cpython cimport Py_buffer, PyObject_GetBuffer, PyBUF_SIMPLE, PyBuffer_Release, PyUnicode_Check, PyObject_CheckBuffer
@@ -86,6 +86,13 @@ cdef class siphash24:
         memcpy(&state, &self.state, sizeof(state))
         cdef uint64_t hash = c_siphash_finalize(&state)
         return hexlify(hash)
+
+    def intdigest(self):
+        """Return the digest calue as a signed 64bit integer."""
+        cdef CSipHash state
+        memcpy(&state, &self.state, sizeof(state))
+        cdef uint64_t hash = c_siphash_finalize(&state)
+        return <int64_t>hash
 
     def copy(self):
         """Return a copy of the hash object."""
