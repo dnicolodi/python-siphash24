@@ -31,5 +31,6 @@ classifiers = [
 ]
 
 [project.urls]
+"Documentation" = "https://dnicolodi.github.io/python-siphash24/"
 "Source" = "https://github.com/dnicolodi/python-siphash24/"
 "Issue Tracker" = "https://github.com/dnicolodi/python-siphash24/issues"
