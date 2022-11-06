@@ -106,3 +106,9 @@ constant attributes:
 .. attribute:: hash.name
 
    The canonical name of the hash as a lower-case string.
+
+
+Release notes
+=============
+
+.. include:: ../CHANGELOG.rst
