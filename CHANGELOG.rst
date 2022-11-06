@@ -6,7 +6,7 @@
 
 __ https://dnicolodi.github.io/python-siphash24/
 
-Unrelased.
+Released 06-11-2022.
 
 
 1.0
