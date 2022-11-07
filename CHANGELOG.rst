@@ -1,3 +1,15 @@
+1.2
+---
+
+- Use `c-siphash library`__ without modifications.
+- Switch the build system to Meson and meson-python.
+- Add support for the SipHash-1-3 variant.
+
+__ https://github.com/c-util/c-siphash
+
+Released 21-22-2022.
+
+
 1.1
 ---
 
