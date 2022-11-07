@@ -2,6 +2,8 @@
 siphash24: Streaming-capable SipHash Implementation
 ===================================================
 
+.. currentmodule:: siphash24
+
 This module provides a C-based streaming-capable implementation of
 `SipHash`__ with an interface compatible with the hash functions
 provided by the :mod:`hashlib` standard library module.  SipHash-1-3
@@ -17,10 +19,11 @@ all supported Python releases on the most common platforms.  More
 platforms can be added to the build job as needed.
 
 Following the :mod:`hashlib` interface, the return value of the
-:meth:`hash.digest` method is a bytes object.  SipHash values are
-customarily stored as 64-bit integers.  This module extends the
-:mod:`hashlib` interface with an additional ``intdigest()`` method
-that returns the hash values as a 64-bit signed int object.
+:meth:`digest() <hash.digest>` method is a bytes object.  SipHash
+values are customarily stored as 64-bit integers.  This module extends
+the :mod:`hashlib` interface with an additional :meth:`intdigest()
+<hash.intdigest>` method that returns the hash values as a 64-bit
+signed int object.
 
 This module is implemented as a thin `Cython`__-based wrapper around
 the `c-siphash library`__ by David Rheinsberg and co-authors.  The
@@ -45,8 +48,6 @@ __ https://spdx.org/licenses/LGPL-2.1-or-later.html
 API
 ===
 
-.. currentmodule:: siphash24
-
 Hash objects implementing the SipHash-1-3 and SipHash-2-4 variants are
 created by calling the constructor functions
 
@@ -63,8 +64,9 @@ respectively. These functions take two optional parameters:
   are zero padded to 16 bytes. It can be passed only as a keyword
   argument.
 
-The hash objects implement the methods provided by the hash objects in
-the standard library :mod:`hashlib` module:
+The hash objects returned but the constructor functions implement the
+methods provided by the hash objects in the standard library
+:mod:`hashlib` module:
 
 .. method:: hash.update(data)
 
