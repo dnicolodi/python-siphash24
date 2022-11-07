@@ -1,8 +1,18 @@
-project = 'siphash24'
+import os
+
+try:
+    import tomllib
+except ImportError:
+    import tomli as tomllib
+
+path = os.path.join(os.path.dirname(__file__), '..', 'pyproject.toml')
+with open(path, 'rb') as fd:
+    pyproject = tomllib.load(fd)['project']
+
+project = pyproject['name']
+version = pyproject['version']
 copyright = '2022, Daniele Nicolodi'
 author = 'Daniele Nicolodi'
-version = '1.1'
-exclude_patterns = []
 language = 'en'
 html_theme = 'furo'
 html_title = f'{project} {version}'
