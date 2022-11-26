@@ -3,6 +3,7 @@ on:
   push:
     tags:
       - 'v[0-9]*'
+  workflow_dispatch:
 
 jobs:
 
@@ -11,18 +12,33 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, windows-2019, macos-11]
+        include:
+          - os: ubuntu-20.04
+          - os: macos-11
+          - os: windows-2019
+            architecture: x86
+          - os: windows-2019
+            architecture: AMD64
     steps:
       - uses: actions/checkout@v3
       - uses: docker/setup-qemu-action@v2
         with:
           platforms: arm64
         if: runner.os == 'Linux'
-      - uses: pypa/cibuildwheel@v2.9.0
+      - uses: bus1/cabuild/action/msdevshell@v1
+        with:
+          architecture: x64
+        if: runner.os == 'Windows' && matrix.architecture == 'AMD64'
+      - uses: bus1/cabuild/action/msdevshell@v1
+        with:
+          architecture: x86
+        if: runner.os == 'Windows' && matrix.architecture == 'x86'
+      - run: pipx run cibuildwheel==2.11.2
         env:
           CIBW_SKIP: pp* cp36-* *-musllinux*
-          CIBW_ARCHS_MACOS: x86_64 universal2
+          CIBW_ARCHS_MACOS: x86_64 arm64
           CIBW_ARCHS_LINUX: x86_64 aarch64
+          CIBW_ARCHS_WINDOWS: ${{ matrix.architecture }}
           CIBW_TEST_COMMAND: python {project}/test.py
       - uses: actions/upload-artifact@v3
         with:
@@ -43,6 +59,7 @@ jobs:
       - wheels
       - sdist
     runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.refs, 'refs/tags/v')
     steps:
       - uses: actions/download-artifact@v3
         with:
