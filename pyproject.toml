@@ -1,8 +1,8 @@
 [build-system]
 requires = [
     "cython >= 3.0.0a11",
-    "meson >= 0.63.3",
-    "meson-python >= 0.11.0",
+    "meson @ git+https://github.com/mesonbuild/meson.git@9d1b59fa7ff1a1a31599a04a02c48c6b41026c2c",
+    "meson-python @ git+https://github.com/dnicolodi/meson-python.git@macos-platform-tag",    
 ]
 build-backend = "mesonpy"
 
