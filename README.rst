@@ -23,10 +23,10 @@ returns the hash values as a 64-bit signed int object.
 This module is implemented as a thin `Cython`__-based wrapper around a
 C language SipHash implementation copied, with minimal modifications
 to allow compilation with MSCV, from the `c-siphash library`__ by
-David Rheinsberg and co-authors.  The ``c-siphash`` library is based
-on the SipHash `reference implementation`__ by Jean-Philippe Aumasson
-and Daniel J. Bernstein released to the Public Domain.  This module is
-distributed with the same license as the ``c-siphash`` library:
+David Rheinsberg and co-authors.  The c-siphash library is based on
+the SipHash `reference implementation`__ by Jean-Philippe Aumasson and
+Daniel J. Bernstein released to the Public Domain.  This module is
+distributed with the same license as the c-siphash library:
 `Apache-2.0`__ or `LGPL-2.1-or-later`__.
 
 __ https://cr.yp.to/siphash/siphash-20120918.pdf
