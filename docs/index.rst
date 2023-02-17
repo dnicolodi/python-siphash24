@@ -50,8 +50,8 @@ API
 Hash objects implementing the SipHash-1-3 and SipHash-2-4 variants are
 created by calling the constructor functions
 
-.. function:: siphash13(data=b'', key=b'')
-.. function:: siphash24(data=b'', key=b'')
+.. function:: siphash13(data=b'', /, *, key=b'')
+.. function:: siphash24(data=b'', /, *, key=b'')
 
 respectively. These functions take two optional parameters:
 
