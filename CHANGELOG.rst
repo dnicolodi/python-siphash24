@@ -1,3 +1,10 @@
+1.3
+---
+
+- Update build dependencies to released versions. No functional changes.
+
+Released 03-03-2023.
+
 1.2
 ---
 
@@ -7,7 +14,7 @@
 
 __ https://github.com/c-util/c-siphash
 
-Released 21-22-2022.
+Released 21-11-2022.
 
 
 1.1
