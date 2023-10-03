@@ -9,13 +9,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: ['3.7', '3.8', '3.9', '3.10', '3.11']
+        python: ['3.7', '3.8', '3.9', '3.10', '3.11', '3.12']
         platform: ['macos-11', 'ubuntu-20.04', 'windows-2022']
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python }}
+          allow-prereleases: true
       - uses: bus1/cabuild/action/msdevshell@v1
         with:
           architecture: x64
