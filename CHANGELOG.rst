@@ -1,3 +1,12 @@
+1.4
+---
+
+- Update build dependencies.
+- Set default buildtype to release.
+- Build wheels for Python 3.12.
+
+Released 03-10-2023.
+
 1.3
 ---
 
