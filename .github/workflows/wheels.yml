@@ -8,23 +8,29 @@ on:
 jobs:
 
   wheels:
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}-latest
     strategy:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-20.04
-          - os: macos-11
-          - os: windows-2019
+          - os: ubuntu
+            architecture: x86_64
+          - os: ubuntu
+            architecture: aarch64
+          - os: macos
+            architecture: x86_64
+          - os: macos
+            architecture: arm64
+          - os: windows
             architecture: x86
-          - os: windows-2019
+          - os: windows
             architecture: AMD64
     steps:
       - uses: actions/checkout@v3
       - uses: docker/setup-qemu-action@v2
         with:
           platforms: arm64
-        if: runner.os == 'Linux'
+        if: runner.os == 'Linux' && matrix.architecture == 'aarch64'
       - uses: bus1/cabuild/action/msdevshell@v1
         with:
           architecture: x64
@@ -33,12 +39,10 @@ jobs:
         with:
           architecture: x86
         if: runner.os == 'Windows' && matrix.architecture == 'x86'
-      - run: pipx run cibuildwheel==2.11.2
+      - run: pipx run cibuildwheel~=2.16.0
         env:
           CIBW_SKIP: pp* cp36-* *-musllinux*
-          CIBW_ARCHS_MACOS: x86_64 arm64
-          CIBW_ARCHS_LINUX: x86_64 aarch64
-          CIBW_ARCHS_WINDOWS: ${{ matrix.architecture }}
+          CIBW_ARCHS: ${{ matrix.architecture }}
           CIBW_TEST_COMMAND: python {project}/test.py
       - uses: actions/upload-artifact@v3
         with:
