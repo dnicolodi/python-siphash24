@@ -1,6 +1,6 @@
 [build-system]
 requires = [
-    "cython >= 3.0.0a11",
+    "cython >= 3.0.2",
     "meson >= 1.0.0",
     "meson-python >= 0.12.0",
 ]
