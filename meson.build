@@ -1,7 +1,7 @@
 project(
   'python-siphash24', 'c', 'cython',
   license: 'Apache-2.0 or LGPL-2.1-or-later',
-  meson_version: '>= 0.63.0',
+  meson_version: '>= 1.0.0',
   default_options: [
     'buildtype=debugoptimized',
     'c_std=c99',
