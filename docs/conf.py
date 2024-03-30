@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: Daniele Nicolodi <daniele@grinta.net>
 # SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
 
+import datetime
 import os
 
 try:
@@ -14,7 +15,7 @@ with open(path, 'rb') as fd:
 
 project = pyproject['name']
 version = pyproject['version']
-copyright = '2022, Daniele Nicolodi'
+copyright = f'2021\N{EN DASH}{datetime.date.today().year} Daniele Nicolodi'
 author = 'Daniele Nicolodi'
 language = 'en'
 html_theme = 'furo'
