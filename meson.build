@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Daniele Nicolodi <daniele@grinta.net>
+# SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
+
 project(
   'python-siphash24', 'c', 'cython',
   license: 'Apache-2.0 or LGPL-2.1-or-later',
