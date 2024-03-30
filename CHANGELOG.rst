@@ -1,6 +1,15 @@
 .. SPDX-FileCopyrightText: Daniele Nicolodi <daniele@grinta.net>
 .. SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
 
+1.5
+---
+
+- Update dependencies to latest released versions.
+- Add SPDX headers to all source files and add licenses text in
+  ``LICENSES`` directory.
+
+Released 30-03-2024
+
 1.4
 ---
 
