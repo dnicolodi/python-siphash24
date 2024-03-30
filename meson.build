@@ -8,7 +8,7 @@ project(
   ]
 )
 
-libcsiphash = dependency('libcsiphash-1', static: true)
+libcsiphash = dependency('libcsiphash-1', version: '>= 1.1.0', static: true)
 
 py = import('python').find_installation()
 
