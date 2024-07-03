@@ -32,7 +32,7 @@ cdef bytes uint64le(uint64_t v):
     return <bytes>r[:8]
 
 
-cdef bytes hexlify(uint64_t v):
+cdef str hexlify(uint64_t v):
     cdef char string[17]
     PyOS_snprintf(
         string, sizeof(string),
@@ -45,7 +45,7 @@ cdef bytes hexlify(uint64_t v):
         <uint8_t>(v >> 40),
         <uint8_t>(v >> 48),
         <uint8_t>(v >> 56))
-    return <bytes>string[:16]
+    return string[:16].decode('ascii')
 
 
 {{for variant in "13", "24"}}

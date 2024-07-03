@@ -32,7 +32,7 @@ class TestSipHas24(unittest.TestCase):
     def test_siphash24_hexdigest(self):
         h = siphash24.siphash24()
         self.assertIsInstance(h.digest(), bytes)
-        self.assertEqual(h.hexdigest(), binascii.hexlify(h.digest()))
+        self.assertEqual(h.hexdigest(), binascii.hexlify(h.digest()).decode('ascii'))
 
     def test_siphash24_name(self):
         h = siphash24.siphash24()

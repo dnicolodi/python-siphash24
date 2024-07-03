@@ -81,7 +81,7 @@ methods provided by the hash objects in the standard library
 
 .. method:: hash.hexdigest()
 
-   Like :meth:`digest` except the digest is returned as a bytes object
+   Like :meth:`digest` except the digest is returned as a string object
    of double length, containing only hexadecimal digits.
 
 .. method:: hash.copy()
