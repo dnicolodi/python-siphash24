@@ -1,6 +1,14 @@
 .. SPDX-FileCopyrightText: Daniele Nicolodi <daniele@grinta.net>
 .. SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
 
+1.7
+---
+
+- Declare support for Python 3.13 in classifiers and build wheels for
+  CPython 3.13.
+
+Released 15-10-2024.
+
 1.6
 ---
 
