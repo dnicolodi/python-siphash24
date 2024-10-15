@@ -6,10 +6,16 @@ import sys
 import siphash24
 
 # Python uses a randomized seed unless told otherwise
-assert int(os.environ['PYTHONHASHSEED']) == 0
+assert int(os.environ.get('PYTHONHASHSEED', '')) == 0
+
+# Ensure that Python is built to use Sip Hash as internal hashing function.
+# The FNV hashing function is used on platforms that require aligned memory
+# access for integers. See PEP-456 for details
+algorithm = sys.hash_info.algorithm
+assert algorithm in {'siphash13', 'siphash24'}
 
 # Python up to release 3.10 uses Sip Hash 13, Python 3.11 and later uses Sip Hash 13
-siphash = getattr(siphash24, sys.hash_info.algorithm)
+siphash = getattr(siphash24, algorithm)
 
 DATA = b'spam'
 
