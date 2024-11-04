@@ -42,9 +42,12 @@ jobs:
         with:
           architecture: x86
         if: runner.os == 'Windows' && matrix.architecture == 'x86'
-      - run: pipx run cibuildwheel~=2.16.0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: pipx run --python 3.13 cibuildwheel~=3.1.0
         env:
-          CIBW_SKIP: pp* cp36-* *-musllinux*
+          CIBW_SKIP: '*-musllinux*'
           CIBW_ARCHS: ${{ matrix.architecture }}
           CIBW_TEST_COMMAND: python {project}/test.py
       - uses: actions/upload-artifact@v4
