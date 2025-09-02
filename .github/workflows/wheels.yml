@@ -47,6 +47,7 @@ jobs:
           python-version: '3.13'
       - run: pipx run --python 3.13 cibuildwheel~=3.1.0
         env:
+          CIBW_ENABLE: cpython-freethreading
           CIBW_SKIP: '*-musllinux*'
           CIBW_ARCHS: ${{ matrix.architecture }}
           CIBW_TEST_COMMAND: python {project}/test.py

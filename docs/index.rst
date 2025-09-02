@@ -117,6 +117,16 @@ constant attributes:
    The canonical name of the hash as a lower-case string.
 
 
+Thread safety
+=============
+
+The ``siphash24`` is compatible with free-threaded builds of CPython.
+``siphash24`` hash objects do not use internal locks to protect against
+concurrent modifications. When hash objects need to be shared between threads,
+:class:`threading.Lock` or other synchronization primitives must be used to
+protect against concurrent modifications.
+
+
 Release notes
 =============
 

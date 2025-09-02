@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: Daniele Nicolodi <daniele@grinta.net>
 # SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
-# cython: language_level=3, boundscheck=False
+# cython: language_level=3, boundscheck=False, freethreading_compatible=True
 
 from libc.stdint cimport uint64_t, int64_t, uint8_t
 from libc.stdio cimport snprintf
