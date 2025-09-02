@@ -1,6 +1,16 @@
 .. SPDX-FileCopyrightText: Daniele Nicolodi <daniele@grinta.net>
 .. SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
 
+1.8
+---
+
+- Declare support for Python 3.14 in classifiers and build wheels for
+  CPython 3.14.
+- Make the extension module compatible with free-threaded builds of
+  CPython and build wheels for CPython 3.13t and 3.14t.
+
+Released 02-09-2025.
+
 1.7
 ---
 
