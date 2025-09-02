@@ -3,8 +3,10 @@
 
 name: lint
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   reuse:
