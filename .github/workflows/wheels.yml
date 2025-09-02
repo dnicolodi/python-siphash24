@@ -6,6 +6,7 @@ on:
   push:
     tags:
       - 'v[0-9]*'
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -81,3 +82,5 @@ jobs:
           merge-multiple: true
           path: dist
       - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
