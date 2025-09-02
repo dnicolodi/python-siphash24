@@ -31,7 +31,7 @@ Released 30-03-2024.
 
 - Update build dependencies.
 - Set default buildtype to release.
-- Build wheels for Python 3.12.
+- Build wheels for CPython 3.12.
 
 Released 03-10-2023.
 
