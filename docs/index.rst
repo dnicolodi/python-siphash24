@@ -15,7 +15,7 @@ added as needed.
 
 This module differs from other similar modules by providing a
 streaming-capable implementation (data can be passed to the hash
-object in chunnks and a digest extracted at the end) and by providing
+object in chunks and a digest extracted at the end) and by providing
 an interface compatible to the hash functions provided by the
 :mod:`hashlib` standard library module.  Binary wheels are provied for
 all supported Python releases on the most common platforms.  More
