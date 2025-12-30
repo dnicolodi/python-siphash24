@@ -17,7 +17,7 @@ This module differs from other similar modules by providing a
 streaming-capable implementation (data can be passed to the hash
 object in chunks and a digest extracted at the end) and by providing
 an interface compatible to the hash functions provided by the
-:mod:`hashlib` standard library module.  Binary wheels are provied for
+:mod:`hashlib` standard library module.  Binary wheels are provided for
 all supported Python releases on the most common platforms.  More
 platforms can be added to the build job as needed.
 
@@ -62,7 +62,7 @@ respectively. These functions take two optional parameters:
   bytes-like object. It can be passed only as positional argument.
 
 * **key** -- key for keyed hashing, which must be a bytes-like
-  object. The passed key can be up to 16 bytes in lenght. Shorter keys
+  object. The passed key can be up to 16 bytes in length. Shorter keys
   are zero padded to 16 bytes. It can be passed only as a keyword
   argument.
 

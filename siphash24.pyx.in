@@ -94,7 +94,7 @@ cdef class siphash{{variant}}:
         return hexlify(hash)
 
     def intdigest(self):
-        """Return the digest calue as a signed 64bit integer."""
+        """Return the digest value as a signed 64bit integer."""
         cdef CSipHash state
         memcpy(&state, &self.state, sizeof(state))
         cdef uint64_t hash = c_siphash_finalize_{{variant}}(&state)
