@@ -6,54 +6,43 @@ on:
   push:
     tags:
       - 'v[0-9]*'
-  workflow_dispatch:
 
 permissions: {}
 
 jobs:
 
   wheels:
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu
-            architecture: x86_64
-          - os: ubuntu
-            architecture: aarch64
-          - os: macos
-            architecture: x86_64
-          - os: macos
-            architecture: arm64
-          - os: windows
+          - os: ubuntu-latest
+          - os: ubuntu-24.04-arm
+          - os: windows-latest
             architecture: x86
-          - os: windows
-            architecture: AMD64
+          - os: windows-latest
+            architecture: x64
+          - os: windows-11-arm
+            architecture: arm64
+          - os: macos-15-intel
+          - os: macos-14
     steps:
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
-      - uses: docker/setup-qemu-action@1f40c72289eff860ee54a304f1438e3cff362e0a  # v4.3.0
-        with:
-          platforms: arm64
-        if: runner.os == 'Linux' && matrix.architecture == 'aarch64'
       - uses: bus1/cabuild/action/msdevshell@06ea2833eef61e9b0d0ce0d728416e617e4fb1fe  # v1
         with:
-          architecture: x64
-        if: runner.os == 'Windows' && matrix.architecture == 'AMD64'
-      - uses: bus1/cabuild/action/msdevshell@06ea2833eef61e9b0d0ce0d728416e617e4fb1fe  # v1
-        with:
-          architecture: x86
-        if: runner.os == 'Windows' && matrix.architecture == 'x86'
+          architecture: ${{ matrix.architecture }}
+        if: runner.os == 'Windows'
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.13'
-      - run: pipx run --python 3.13 cibuildwheel~=3.1.0
+          python-version: '3.14'
+      - run: echo "${{ case(matrix.architecture == 'x64', 'AMD64', matrix.architecture) }}"
+      - run: pipx run --python 3.14 cibuildwheel==4.2.1
         env:
-          CIBW_ENABLE: cpython-freethreading
           CIBW_SKIP: '*-musllinux*'
-          CIBW_ARCHS: ${{ matrix.architecture }}
+          CIBW_ARCHS: ${{ case(matrix.architecture == 'x64', 'AMD64', matrix.architecture) }}
           CIBW_TEST_COMMAND: python {project}/test.py
       - uses: actions/upload-artifact@v7
         with:
@@ -78,6 +67,7 @@ jobs:
       - wheels
       - sdist
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
     environment: upload
     permissions:
       id-token: write
