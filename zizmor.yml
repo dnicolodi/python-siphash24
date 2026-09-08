@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: Daniele Nicolodi <daniele@grinta.net>
+# SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
+
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        actions/*: ref-pin
