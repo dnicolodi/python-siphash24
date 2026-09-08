@@ -8,6 +8,8 @@ on:
       - master
   pull_request:
 
+permissions: {}
+
 jobs:
   tests:
     runs-on: ${{ matrix.platform }}
@@ -29,12 +31,14 @@ jobs:
           - ubuntu-latest
           - windows-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python }}
           allow-prereleases: true
-      - uses: bus1/cabuild/action/msdevshell@v1
+      - uses: bus1/cabuild/action/msdevshell@06ea2833eef61e9b0d0ce0d728416e617e4fb1fe  # v1
         with:
           architecture: x64
         if: runner.os == 'Windows'
